@@ -1,4 +1,5 @@
-# mHero Workflows White Paper: Use cases for short messaging and FHIR with mHero
+# mHero Workflows White Paper
+## Use cases for short messaging and FHIR with mHero
 
 This is a collaborative white paper that captures proposed use cases and implementation for FHIR-oriented workflows using mHero. 
 
