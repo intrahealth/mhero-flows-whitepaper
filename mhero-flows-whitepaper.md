@@ -1,6 +1,6 @@
 **IntraHealth International**
 
-**mHero Workflows White Paper: Use cases for short messaging and FHIR with mHero**
+# **mHero Workflows White Paper: Use cases for short messaging and FHIR with mHero**
 
 **Revision 0.1 - Draft**
 
@@ -25,16 +25,53 @@ Comments are welcome. Please submit a [GitHub Issue](https://github.com/intrahea
 * [6 Structured Data Capture](#6-structured-data-capture)
 
 
-# 1 Introduction
+## 1 Introduction
 
 
-# 2 Short Messaging
+## 2 Short Messaging
 
 
-# 3 mHero and Health Worker Registries
+## 3 mHero and Health Worker Registries
 
 
-# 4 Summary of Workflows
+## 4 Summary of Workflows
+
+### Use Case: Sync RapidPro contacts and groups with point of service systems
+* **Example**: Verifying in the CHW registry the phone numbers of CHWs who register women for age- and stage-based messaging.
+* **Short description**: mHero as a connector that syncs contacts between RapidPro and point of service systems in FHIR standard.
+* **Technical description**: mHero runs as a microservice that syncs (one-way in either direction, or two-way) contacts and groups between RapidPro and point of service systems in FHIR standard. The sync can occur in the background or by manual trigger via an end point.
+
+### Use Case: Broadcast one-way messages using contacts from the health worker registry (or other registry) and IDs from the facility registry
+* **Example**: Notifying vaccinators about vaccine delivery dates at the facility where they are based.
+* **Short description**: mHero acts as a connector that syncs contacts between RapidPro and FHIR registry, and stores facility IDs.The HAPI FHIR Server then acts as a webhook for matching facility IDs.
+* **Technical description**: mHero does contact syncing as above, and additionally can provide the facility IDs for the health worker (or other contact). The API for webhook queries is the HAPI FHIR Server.
+
+
+### Use Case: Broadcast one-way messages originated within POS system
+
+* **Example**: Sending reporting reminder to data managers who have not submitted weekly report.
+* **Short description**: mHero syncs contacts and a module within the POS system is used to compose messages and trigger the sending which is done through RapidPro channels.
+* **Technical description**: Contact sync happens as above. mHero interface enables composing messages, selecting contacts to receive the message, specifying the frequency and timing of sending, and triggering the sending.
+
+### Use Case: Collect aggregate, routine data and push to POS system
+
+* **Example**: Collecting daily reports of numbers of patients vaccinated.
+* **Short description**: mHero syncs contacts. Reporting data must be formally mapped using mHero configurations.
+* **Technical description**: Contact (demographic data) sync happens as above except for custom contact fields which must be mapped.Simple, unstructured data will be converted to FHIR Questionnaire Response and Communications resources. Form-oriented data must be mapped between RapidPro and POS system (registry/DHIS2). A data manager must map RapidPro flows to DHIS2 indicators/registry fields. This must be done for each questionnaire intended to be sent.
+
+### Use Case: Contact initiated data submission 
+
+* **Example**: Case-based reporting by health workers (eIDSR)
+* **Short description**: mHero syncs contacts. Reporting data must be formally mapped using mHero configurations. Data can be submitted to multiple systems triggering other messaging or other actions.
+* **Technical description**: Contact sync happens as above. Structured SMS flows are mapped between RapidPro and DHIS2 (and/or other POS systems). New case reports initiate flow to collect other information about the case; this information can be submitted to other systems as well (i.e. lab system) and notifications can be set up to alert people or offices (i.e. District Surveillance Officer) about new cases reported.
+
+
+### Use Case: Both contacts (existing and new) and the system can initiate two-way messaging to submit/collect data can be pushed to DHIS2 and other POS systems
+
+* **Example**: Polls on vaccine acceptance/hesitancy, self-reporting of vaccine doses received.
+* **Short description**: mHero syncs existing contacts. Reporting data must be formally mapped using mHero configurations. In addition to the above, CasePro can be used independently for unstructured data.
+* **Technical description**: Contact (demographic data) sync happens as above except for custom contact fields which must be mapped.Simple, unstructured data will be converted to FHIR Questionnaire Response and Communications resources. Form-oriented data must be mapped between RapidPro and DHIS2 (or other POS system). A data manager must map RapidPro flows to DHIS2 indicators/registry fields. This must be done for each questionnaire intended to be sent. In addition to the above, CasePro is used independently for "help desk" type support. Ad-hoc messages to the help desk are not mapped, but are available in FHIR Communication resources.
+
 
 
 # 5 Synchronizing Practitioners
