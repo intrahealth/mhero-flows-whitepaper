@@ -23,6 +23,7 @@ Comments are welcome. Please submit a [GitHub Issue](https://github.com/intrahea
 * [4 Summary of Workflows](#4-summary-of-workflows)
 * [5 Synchronizing Practitioners](#5-synchronizing-practitioners)
 * [6 Structured Data Capture](#6-structured-data-capture)
+* [7 Multi-Language Questionnaires](#7-multi-language-questionnaires)
 
 
 ## 1 Introduction
@@ -91,7 +92,9 @@ mHero’s origin and ongoing use and development illustrate how the platform is 
 
 
 
-# 5 Synchronizing Practitioners
+## 5 Synchronizing Practitioners
 
 
-# 6 Structured Data Capture
+## 6 Structured Data Capture
+
+## 7 Multi-Language Questionnaires
