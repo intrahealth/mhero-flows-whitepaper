@@ -9,4 +9,5 @@ Collaborators may create an issue or write their contributions and submit them a
 
 ## Todo
 
-- [] Document methodologies for the 3 methods of SDC.
+- [] Methodologies for the 3 methods of SDC.
+- [] Multi-language questionnaires.
